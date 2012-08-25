@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPT", "XPT\XPT\XPT.csproj", "{FA825200-F9FE-42E4-9DCD-88DF87CD2F59}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "XPTContent", "XPT\XPTContent\XPTContent.contentproj", "{8B3A2E5B-BEF2-4815-A9B3-16D59C1F2E9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPTLib", "XPTLib\XPTLib.csproj", "{92FD88FE-5B68-4ED3-9ECC-5B5F33C889A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA825200-F9FE-42E4-9DCD-88DF87CD2F59}.Debug|x86.ActiveCfg = Debug|x86
+		{FA825200-F9FE-42E4-9DCD-88DF87CD2F59}.Debug|x86.Build.0 = Debug|x86
+		{FA825200-F9FE-42E4-9DCD-88DF87CD2F59}.Release|x86.ActiveCfg = Release|x86
+		{FA825200-F9FE-42E4-9DCD-88DF87CD2F59}.Release|x86.Build.0 = Release|x86
+		{8B3A2E5B-BEF2-4815-A9B3-16D59C1F2E9E}.Debug|x86.ActiveCfg = Debug|x86
+		{8B3A2E5B-BEF2-4815-A9B3-16D59C1F2E9E}.Release|x86.ActiveCfg = Release|x86
+		{92FD88FE-5B68-4ED3-9ECC-5B5F33C889A1}.Debug|x86.ActiveCfg = Debug|x86
+		{92FD88FE-5B68-4ED3-9ECC-5B5F33C889A1}.Debug|x86.Build.0 = Debug|x86
+		{92FD88FE-5B68-4ED3-9ECC-5B5F33C889A1}.Release|x86.ActiveCfg = Release|x86
+		{92FD88FE-5B68-4ED3-9ECC-5B5F33C889A1}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
