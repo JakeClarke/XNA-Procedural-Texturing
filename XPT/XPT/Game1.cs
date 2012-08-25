@@ -42,13 +42,16 @@ namespace XPT
 
             DateTime start = DateTime.Now;
             XPTLib.Nodes.FlatColour redNode = new XPTLib.Nodes.FlatColour(Color.Red), blueNode = new XPTLib.Nodes.FlatColour(Color.Blue), blendMask = new XPTLib.Nodes.FlatColour(Color.Gray);
+            XPTLib.Nodes.Noise noise = new XPTLib.Nodes.Noise();
             XPTLib.Nodes.Blend blend = new XPTLib.Nodes.Blend();
             blend.Foreground = redNode.Out;
             blend.Background = blueNode.Out;
-            blend.BlendMask = blendMask.Out;
+            blend.BlendMask = noise.Out;
 
             g.AddNode(redNode);
             g.AddNode(blueNode);
+            g.AddNode(blendMask);
+            g.AddNode(noise);
 
             XPTLib.Nodes.Output output = new XPTLib.Nodes.Output(200, 200);
             g.AddNode(output);

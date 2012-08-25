@@ -98,8 +98,10 @@
     <Compile Include="Nodes\Blend.cs" />
     <Compile Include="Nodes\FlatColour.cs" />
     <Compile Include="Nodes\FromTexture2D.cs" />
+    <Compile Include="Nodes\Noise.cs" />
     <Compile Include="Nodes\Output.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rand.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
