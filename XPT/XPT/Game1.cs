@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using XPTLib;
 using System.Diagnostics;
+using XPT.Gui;
 
 namespace XPT
 {
@@ -26,6 +27,7 @@ namespace XPT
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            this.Components.Add(new GuiManager(this));
         }
 
         Graph graph;
