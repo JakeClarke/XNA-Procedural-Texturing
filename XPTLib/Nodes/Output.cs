@@ -31,5 +31,7 @@ namespace XPTLib.Nodes
             get { return this.getInput("In"); }
             set { this.SetInput("In", value); }
         }
+
+        public string Name { get; set; }
     }
 }
