@@ -26,6 +26,9 @@ namespace XPT.Gui
 
         public override void Draw(SpriteBatch guiSpriteBatch, GameTime gameTime, Vector2 position)
         {
+            Rectangle b = this.Bounds;
+            b.X += (int)position.X;
+            b.Y += (int)position.Y;
             guiSpriteBatch.Draw(blank, this.bounds, this.color);
             base.Draw(guiSpriteBatch, gameTime, new Vector2(bounds.X, bounds.Y));
         }
