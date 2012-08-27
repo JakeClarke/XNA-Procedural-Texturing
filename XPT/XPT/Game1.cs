@@ -53,14 +53,14 @@ namespace XPT
             g.AddNode(blendMask);
             g.AddNode(noise);
 
-            XPTLib.Nodes.Output output = new XPTLib.Nodes.Output(200, 200);
+            this.output = new XPTLib.Nodes.Output(200, 200);
             g.AddNode(output);
             output.In = blend.Out;
             res = output.GetResult();
-            Debug.Write("Time to compute texture: " + DateTime.Now.Subtract(start).TotalSeconds);
+            Debug.WriteLine("Time to compute texture: " + DateTime.Now.Subtract(start).TotalSeconds);
             base.Initialize();
         }
-
+        XPTLib.Nodes.Output output;
         Texture2D res;
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace XPT
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(res, Vector2.Zero, Color.White);
+            spriteBatch.Draw(output.GetResult(), Vector2.Zero, Color.White);
             spriteBatch.End();
 
             base.Draw(gameTime);
