@@ -55,6 +55,19 @@ namespace XPT.Gui
             child.Manager = null;
         }
 
-        public GuiManager Manager { get; set; }
+        private GuiManager manager;
+
+        public GuiManager Manager
+        {
+            get { return this.manager; }
+            set
+            {
+                this.manager = value;
+                foreach (var item in this.children)
+                {
+                    item.Manager = this.manager;
+                }
+            }
+        }
     }
 }
