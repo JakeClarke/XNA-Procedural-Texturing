@@ -37,6 +37,7 @@ namespace XPT.Gui
         {
             this.Content = Game.Content;
             this.AddChild(new Panel(new Rectangle(20, 20, 100, 100)));
+            this.AddChild(new Label("Test", new Vector2(100f)));
             base.Initialize();
         }
 
@@ -54,6 +55,7 @@ namespace XPT.Gui
         {
             this.spriteBatch = new SpriteBatch(this.Game.GraphicsDevice);
             Mouse.LoadContent(this.Game.Content.Load<Texture2D>("Textures\\Mouse"));
+            this.DefaultFont = this.Game.Content.Load<SpriteFont>("Fonts\\Default");
 
             foreach (var item in this.guiComponent)
             {
@@ -98,5 +100,7 @@ namespace XPT.Gui
         }
 
         public ContentManager Content { get; set; }
+
+        public SpriteFont DefaultFont { get; private set; }
     }
 }
