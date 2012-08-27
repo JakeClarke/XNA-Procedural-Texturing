@@ -20,7 +20,6 @@ namespace XPT
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        GraphManager gm;
         Texture2D gRes;
 
         public Game1()
@@ -37,8 +36,7 @@ namespace XPT
         /// </summary>
         protected override void Initialize()
         {
-            this.gm = new GraphManager(this);
-            Graph g = new Graph(this.gm);
+            Graph g = new Graph(this);
 
             DateTime start = DateTime.Now;
             XPTLib.Nodes.FlatColour redNode = new XPTLib.Nodes.FlatColour(Color.Red), blueNode = new XPTLib.Nodes.FlatColour(Color.Blue), blendMask = new XPTLib.Nodes.FlatColour(Color.Gray);

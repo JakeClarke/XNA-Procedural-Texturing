@@ -5,19 +5,20 @@ using System.Text;
 using XPTLib.Nodes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace XPTLib
 {
     public sealed class Graph
     {
-        GraphManager gm;
+        Game game;
         List<BaseNode> nodes = new List<BaseNode>();
         List<Output> outputs = new List<Output>(); // for quick differentiation.
 
-        public Graph(GraphManager gm)
+        public Graph(Game game)
         {
-            this.gm = gm;
-            this.gm.AddGraph(this);
+            this.game = game;
+            
         }
 
         public void AddNode(BaseNode node)
@@ -100,6 +101,14 @@ namespace XPTLib
         /// </summary>
         public BaseNode[] Nodes { get { return this.nodes.ToArray(); } }
 
-        public GraphManager Manager { get { return this.gm; } }
+        /// <summary>
+        /// Gets or sets the content manager for this graph.
+        /// </summary>
+        public ContentManager Content { get; set; }
+
+        /// <summary>
+        /// Gets the game context for this graph.
+        /// </summary>
+        public Game Game { get { return this.game; } }
     }
 }

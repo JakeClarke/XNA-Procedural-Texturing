@@ -21,7 +21,7 @@ namespace XPTLib.Nodes
 
         public Texture2D GetResult()
         {
-            Texture2D res = new Texture2D(this.Graph.Manager.Graphics, Width, Height);
+            Texture2D res = new Texture2D(this.Graph.Game.GraphicsDevice, Width, Height);
             res.SetData<Color>(this.getInput("In")(this.Height, this.Width));
             return res;
         }
