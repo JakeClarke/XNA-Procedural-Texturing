@@ -8,7 +8,7 @@ namespace XPTLib.Nodes
 {
     public class Noise : BaseNode
     {
-        public Noise()
+        public Noise(Graph g) : base(g)
         {
             this.registerOutput("Out", generateNoise);
         }

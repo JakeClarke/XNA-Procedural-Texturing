@@ -11,7 +11,7 @@ namespace XPTLib.Nodes
     {
         public Texture2D Texture { get; set; }
 
-        public FromTexture2D(Texture2D texture)
+        public FromTexture2D(Graph g, Texture2D texture) : base(g)
         {
             this.Texture = Texture;
             this.registerOutput("File", getTexture);

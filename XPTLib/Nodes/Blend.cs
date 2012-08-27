@@ -9,7 +9,7 @@ namespace XPTLib.Nodes
 {
     public class Blend : BaseNode
     {
-        public Blend()
+        public Blend(Graph g) : base(g)
         {
             this.registerInput("Background");
             this.registerInput("Foreground");

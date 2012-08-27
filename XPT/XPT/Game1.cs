@@ -28,6 +28,8 @@ namespace XPT
             Content.RootDirectory = "Content";
         }
 
+        Graph graph;
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -36,28 +38,23 @@ namespace XPT
         /// </summary>
         protected override void Initialize()
         {
-            Graph g = new Graph(this);
-
             DateTime start = DateTime.Now;
-            XPTLib.Nodes.FlatColour redNode = new XPTLib.Nodes.FlatColour(Color.Red), blueNode = new XPTLib.Nodes.FlatColour(Color.Blue), blendMask = new XPTLib.Nodes.FlatColour(Color.Gray);
-            XPTLib.Nodes.Noise noise = new XPTLib.Nodes.Noise();
-            XPTLib.Nodes.Blend blend = new XPTLib.Nodes.Blend();
+            this.graph = new Graph(this);
+            XPTLib.Nodes.FlatColour redNode = new XPTLib.Nodes.FlatColour(graph,Color.Red), blueNode = new XPTLib.Nodes.FlatColour(graph, Color.Blue), blendMask = new XPTLib.Nodes.FlatColour(graph, Color.Gray);
+            XPTLib.Nodes.Noise noise = new XPTLib.Nodes.Noise(graph);
+            XPTLib.Nodes.Blend blend = new XPTLib.Nodes.Blend(graph);
             blend.Foreground = redNode.Out;
             blend.Background = blueNode.Out;
             blend.BlendMask = noise.Out;
 
-            g.AddNode(redNode);
-            g.AddNode(blueNode);
-            g.AddNode(blendMask);
-            g.AddNode(noise);
+            this.output = new XPTLib.Nodes.Output(graph, 200, 200);
 
-            this.output = new XPTLib.Nodes.Output(200, 200);
-            g.AddNode(output);
             output.In = blend.Out;
             res = output.GetResult();
             Debug.WriteLine("Time to compute texture: " + DateTime.Now.Subtract(start).TotalSeconds);
             base.Initialize();
         }
+
         XPTLib.Nodes.Output output;
         Texture2D res;
 

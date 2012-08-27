@@ -26,7 +26,6 @@ namespace XPTLib
             if (!this.nodes.Contains(node))
             {
                 this.nodes.Add(node);
-                node.Graph = this;
 
                 if (node is Output)
                 {

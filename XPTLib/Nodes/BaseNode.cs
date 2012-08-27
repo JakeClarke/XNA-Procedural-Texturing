@@ -8,14 +8,20 @@ using System.Diagnostics;
 
 namespace XPTLib.Nodes
 {
-    public abstract class BaseNode
+    public abstract class BaseNode : IDisposable
     {
 
         public delegate Color[] Render(int hight,int width);
 
         Dictionary<string, Render> inputs = new Dictionary<string, Render>(), outputs = new Dictionary<string, Render>();
 
-        public Graph Graph { get; set; }
+        public Graph Graph { get; private set; }
+
+        public BaseNode(Graph graph)
+        {
+            this.Graph = graph;
+            this.Graph.AddNode(this);
+        }
 
         protected void registerInput(string name)
         {
@@ -61,6 +67,11 @@ namespace XPTLib.Nodes
         public string GetOutputName(int i)
         {
             return this.outputs.ElementAt(i).Key;
+        }
+
+        public void Dispose()
+        {
+            this.Graph.RemoveNode(this);
         }
     }
 }

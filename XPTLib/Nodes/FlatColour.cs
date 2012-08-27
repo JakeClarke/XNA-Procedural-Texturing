@@ -12,12 +12,12 @@ namespace XPTLib.Nodes
         public Color Colour { get; set; }
 
 
-        public FlatColour() : this(Color.White)
+        public FlatColour(Graph g) : this(g, Color.White)
         {
             
         }
 
-        public FlatColour(Color colour)
+        public FlatColour(Graph g, Color colour) : base(g)
         {
             this.Colour = colour;
             this.registerOutput("Out", generateDiffuse);

@@ -12,7 +12,7 @@ namespace XPTLib.Nodes
         public int Height { get; set; }
         public int Width { get; set; }
 
-        public Output(int height, int width)
+        public Output(Graph g, int height, int width) : base(g)
         {
             this.registerInput("In");
             this.Height = height;
