@@ -23,6 +23,9 @@ namespace XPTLib
 
         public void AddNode(BaseNode node)
         {
+            if (node.Graph != this)
+                throw new Exception("Node's parent graph is not this graph.");
+
             if (!this.nodes.Contains(node))
             {
                 this.nodes.Add(node);
@@ -36,13 +39,31 @@ namespace XPTLib
 
         public void RemoveNode(BaseNode node)
         {
+            if (node.Graph != this)
+                throw new Exception("Node's parent graph is not this graph.");
+
             if (this.nodes.Contains(node))
             {
                 this.nodes.Remove(node);
 
                 if (node is Output)
                 {
+                    // only has inputs we dont care about clearing those up because the node isnt part of the graph anymore, and shouldnt be used.
                     this.outputs.Remove((Output)node);
+                }
+                else // remove all input references from remaining nodes.
+                {
+                    foreach (BaseNode n in this.nodes)
+                    {
+                        for (int i = 0; i < n.GetInputCount(); i++)
+                        {
+                            if (n.GetInput(i).Target == node)
+                            {
+                                string name = n.GetInputName(i);
+                                n.SetInput(name, null);
+                            }
+                        }
+                    }
                 }
             }
         }
