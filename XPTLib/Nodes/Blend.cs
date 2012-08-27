@@ -20,9 +20,9 @@ namespace XPTLib.Nodes
         Color[] renderBlend(int height, int width)
         {
             int pixels = height * width;
-            Color[] tex1 = this.getInput("Background")(height, width);
-            Color[] tex2 = this.getInput("Foreground")(height, width);
-            Color[] blend = this.getInput("Blend Mask")(height, width);
+            Color[] tex1 = this.GetInput("Background")(height, width);
+            Color[] tex2 = this.GetInput("Foreground")(height, width);
+            Color[] blend = this.GetInput("Blend Mask")(height, width);
             Color[] resBuff = new Color[pixels];
 
             for (int i = 0; i < pixels; i++)
@@ -38,19 +38,19 @@ namespace XPTLib.Nodes
 
         public Render Background
         {
-            get { return this.getInput("Background"); }
+            get { return this.GetInput("Background"); }
             set { this.SetInput("Background", value); }
         }
 
         public Render Foreground
         {
-            get { return this.getInput("Foreground"); }
+            get { return this.GetInput("Foreground"); }
             set { this.SetInput("Foreground", value); }
         }
 
         public Render BlendMask
         {
-            get { return this.getInput("Blend Mask"); }
+            get { return this.GetInput("Blend Mask"); }
             set { this.SetInput("Blend Mask", value); }
         }
     }

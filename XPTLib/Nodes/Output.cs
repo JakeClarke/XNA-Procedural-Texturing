@@ -22,13 +22,13 @@ namespace XPTLib.Nodes
         public Texture2D GetResult()
         {
             Texture2D res = new Texture2D(this.Graph.Game.GraphicsDevice, Width, Height);
-            res.SetData<Color>(this.getInput("In")(this.Height, this.Width));
+            res.SetData<Color>(this.GetInput("In")(this.Height, this.Width));
             return res;
         }
 
         public Render In
         {
-            get { return this.getInput("In"); }
+            get { return this.GetInput("In"); }
             set { this.SetInput("In", value); }
         }
 

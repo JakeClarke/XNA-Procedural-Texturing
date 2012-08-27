@@ -28,15 +28,26 @@ namespace XPTLib.Nodes
             inputs.Add(name, null);
         }
 
-        protected Render getInput(string name)
+        public Render GetInput(string name)
         {
             return this.inputs[name];
         }
 
+        public Render GetInput(int i)
+        {
+            return this.inputs.ElementAt(i).Value;
+        }
+
         public void SetInput(string name, Render s)
         {
-            Debug.Assert(this.inputs.ContainsKey(name));
-            this.inputs[name] = s;
+            if (this.inputs.ContainsKey(name))
+            {
+                this.inputs[name] = s;
+            }
+            else
+            {
+                throw new Exception("Use of a unregistered input. Inputs must to registered by the node before it can be used.");
+            }
         }
 
         public int GetInputCount()
