@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using XPTLib;
+using XPTLib.Nodes;
 
 
 namespace XPT.Gui
@@ -22,6 +23,7 @@ namespace XPT.Gui
         List<GuiRenderable> guiComponent = new List<GuiRenderable>();
         Graph activeGraph;
         bool initialized = false;
+        OutputPreview outputPreview;
 
         public GuiManager(Game game)
             : base(game)
@@ -36,8 +38,8 @@ namespace XPT.Gui
         public override void Initialize()
         {
             this.Content = Game.Content;
-            this.AddChild(new Panel(new Rectangle(20, 20, 100, 100)));
-            this.AddChild(new Label("Test", new Vector2(100f)));
+            this.outputPreview = new OutputPreview(new Vector2(100f));
+            this.AddChild(outputPreview);
             base.Initialize();
         }
 
@@ -102,5 +104,11 @@ namespace XPT.Gui
         public ContentManager Content { get; set; }
 
         public SpriteFont DefaultFont { get; private set; }
+
+        public Output PreviewOutputTarget
+        {
+            get { return this.outputPreview.OutputNode; }
+            set { this.outputPreview.OutputNode = value; }
+        }
     }
 }

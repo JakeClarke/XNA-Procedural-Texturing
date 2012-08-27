@@ -22,12 +22,14 @@ namespace XPT
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D gRes;
+        GuiManager guiManager;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            this.Components.Add(new GuiManager(this));
+            this.guiManager = new GuiManager(this);
+            this.Components.Add(guiManager);
         }
 
         Graph graph;
@@ -40,8 +42,11 @@ namespace XPT
         /// </summary>
         protected override void Initialize()
         {
+            base.Initialize();
             DateTime start = DateTime.Now;
             this.graph = new Graph(this);
+            this.guiManager.ActiveGraph = this.graph;
+            
             XPTLib.Nodes.FlatColour redNode = new XPTLib.Nodes.FlatColour(graph,Color.Red), blueNode = new XPTLib.Nodes.FlatColour(graph, Color.Blue), blendMask = new XPTLib.Nodes.FlatColour(graph, Color.Gray);
             XPTLib.Nodes.Noise noise = new XPTLib.Nodes.Noise(graph);
             XPTLib.Nodes.Blend blend = new XPTLib.Nodes.Blend(graph);
@@ -50,11 +55,11 @@ namespace XPT
             blend.BlendMask = noise.Out;
 
             this.output = new XPTLib.Nodes.Output(graph, 200, 200);
-
+            this.guiManager.PreviewOutputTarget = output;
             output.In = blend.Out;
             res = output.GetResult();
             Debug.WriteLine("Time to compute texture: " + DateTime.Now.Subtract(start).TotalSeconds);
-            base.Initialize();
+            
         }
 
         XPTLib.Nodes.Output output;
@@ -104,10 +109,6 @@ namespace XPT
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            spriteBatch.Begin();
-            spriteBatch.Draw(output.GetResult(), Vector2.Zero, Color.White);
-            spriteBatch.End();
 
             base.Draw(gameTime);
         }
