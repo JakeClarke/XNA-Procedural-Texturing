@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using XPTLib.Nodes;
@@ -27,7 +25,9 @@ namespace XPT.Gui
                 this.isDirty = false;
                 if (this.outputNode != null)
                 {
+                    DateTime start = DateTime.Now;
                     this.preview = this.outputNode.GetResult();
+                    Debug.WriteLine("Time to compute texture: " + DateTime.Now.Subtract(start).TotalSeconds);
                     Rectangle newBounds = this.Bounds;
                     newBounds.Width = this.preview.Width + 10;
                     newBounds.Height = this.preview.Height + 40;
