@@ -59,7 +59,6 @@ namespace XPT
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             this.graph = new Graph(this);
-            this.guiManager.ActiveGraph = this.graph;
 
             XPTLib.Nodes.FlatColour redNode = new XPTLib.Nodes.FlatColour(graph, Color.Red), blueNode = new XPTLib.Nodes.FlatColour(graph, Color.Blue), blendMask = new XPTLib.Nodes.FlatColour(graph, Color.Gray);
             XPTLib.Nodes.Noise noise = new XPTLib.Nodes.Noise(graph);
@@ -73,6 +72,8 @@ namespace XPT
             this.guiManager.PreviewOutputTarget = output;
 
             output.In = blend.Out;
+
+            this.guiManager.ActiveGraph = this.graph;
         }
 
         /// <summary>

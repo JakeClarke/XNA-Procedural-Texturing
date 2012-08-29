@@ -60,6 +60,21 @@ namespace XPTLib.Nodes
             return this.inputs.ElementAt(i).Key;
         }
 
+        /// <summary>
+        /// Get all input names.
+        /// </summary>
+        /// <returns>An array of input names.</returns>
+        public string[] GetInputNames()
+        {
+            string[] names = new string[this.GetInputCount()];
+            for (int i = 0; i < names.Length; i++)
+            {
+                names[i] = this.GetInputName(i);
+            }
+
+            return names;
+        }
+
         protected void registerOutput(string name, Render s)
         {
             this.outputs.Add(name, s);
@@ -78,6 +93,21 @@ namespace XPTLib.Nodes
         public string GetOutputName(int i)
         {
             return this.outputs.ElementAt(i).Key;
+        }
+
+        /// <summary>
+        /// Get all output names.
+        /// </summary>
+        /// <returns>An array of the output names.</returns>
+        public string[] GetOuputNames()
+        {
+            string[] names = new string[this.GetOutputCount()];
+            for (int i = 0; i < names.Length; i++)
+            {
+                names[i] = this.GetOutputName(i);
+            }
+
+            return names;
         }
 
         public void Dispose()

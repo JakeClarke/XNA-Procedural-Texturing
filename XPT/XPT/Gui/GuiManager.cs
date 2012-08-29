@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using XPTLib;
 using XPTLib.Nodes;
+using XPT.Gui.GraphEditor;
 
 
 namespace XPT.Gui
@@ -40,6 +41,8 @@ namespace XPT.Gui
             this.Content = Game.Content;
             this.outputPreview = new OutputPreview(new Vector2(100f));
             this.AddChild(outputPreview);
+            this.NodeGraph = new GraphContainer(new Rectangle(10, 100, 600, 600));
+            this.AddChild(NodeGraph);
             base.Initialize();
         }
 
@@ -98,7 +101,11 @@ namespace XPT.Gui
 
         public Graph ActiveGraph {
             get { return this.activeGraph; }
-            set { this.activeGraph = value; }
+            set 
+            {
+                this.NodeGraph.LoadGraph(value);
+                this.activeGraph = value; 
+            }
         }
 
         public ContentManager Content { get; set; }
@@ -110,5 +117,7 @@ namespace XPT.Gui
             get { return this.outputPreview.OutputNode; }
             set { this.outputPreview.OutputNode = value; }
         }
+
+        internal GraphContainer NodeGraph { get; set; }
     }
 }

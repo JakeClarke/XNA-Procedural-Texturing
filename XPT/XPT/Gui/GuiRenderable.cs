@@ -10,6 +10,7 @@ namespace XPT.Gui
     public abstract class GuiRenderable
     {
         List<GuiRenderable> children = new List<GuiRenderable>();
+        private bool initalized = false;
 
         public bool Enabled { get; set; }
 
@@ -20,6 +21,7 @@ namespace XPT.Gui
 
         public virtual void LoadContent()
         {
+            initalized = true;
             foreach (var item in children)
             {
                 item.LoadContent();
@@ -47,6 +49,8 @@ namespace XPT.Gui
         {
             this.children.Add(child);
             child.Manager = Manager;
+            if (this.initalized)
+                child.LoadContent();
         }
 
         public void RemovedChild(GuiRenderable child)

@@ -107,6 +107,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Gui\GraphEditor\GraphContainer.cs" />
+    <Compile Include="Gui\GraphEditor\GraphNode.cs" />
     <Compile Include="Gui\GuiManager.cs" />
     <Compile Include="Gui\GuiRenderable.cs" />
     <Compile Include="Gui\Mouse.cs" />
@@ -159,6 +161,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--
