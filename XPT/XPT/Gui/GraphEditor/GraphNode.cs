@@ -15,10 +15,11 @@ namespace XPT.Gui.GraphEditor
         bool isInvalid = true;
         Texture2D[] previewTextures;
         static readonly Rectangle previewBounds = new Rectangle(5, 35, 90, 90);
-        static readonly Color defaultColor = Color.Red * 0.5f;
+        static readonly Color defaultColor = Color.Green * 0.5f, unlinkedColor = Color.Red * 0.5f, outputColor = Color.Blue * 0.5f;
 
         public GraphNode(Vector2 position, BaseNode node)
         {
+            this.Position = position;
             this.node = node;
             // get all the inputs and outputs for display later.
             this.nodeOutputs = this.node.GetOuputNames();
@@ -28,8 +29,9 @@ namespace XPT.Gui.GraphEditor
                 this.previewTextures = new Texture2D[1];
             else
                 this.previewTextures = new Texture2D[nodeOutputs.Length];
-            this.container = new TitledPanel(node.GetType().Name, new Rectangle((int)position.X, (int)position.Y, 100, 130));
+            this.container = new TitledPanel(node.GetType().Name, new Rectangle(0, 0, 100, 130));
             this.container.Color = defaultColor;
+            this.Linked = false;
             this.AddChild(container);
         }
 
@@ -46,6 +48,12 @@ namespace XPT.Gui.GraphEditor
 
         public override void Draw(SpriteBatch guiSpriteBatch, GameTime gameTime, Vector2 position)
         {
+
+            position += this.Position;
+
+            this.container.Color = this.node is Output ? outputColor : 
+                this.Linked ? defaultColor : unlinkedColor;
+
             base.Draw(guiSpriteBatch, gameTime, position);
 
             if (this.isInvalid)
@@ -76,9 +84,13 @@ namespace XPT.Gui.GraphEditor
 
         public BaseNode Node { get { return this.node; } }
 
+        public Vector2 Position { get; set; }
+
         public void Invalidate()
         {
             this.isInvalid = true;
         }
+
+        public bool Linked { get; set; }
     }
 }
