@@ -39,9 +39,9 @@ namespace XPT.Gui
         public override void Initialize()
         {
             this.Content = Game.Content;
-            this.outputPreview = new OutputPreview(new Vector2(100f));
+            this.outputPreview = new OutputPreview(new Vector2(700f, 200f));
             this.AddChild(outputPreview);
-            this.NodeGraph = new GraphContainer(new Rectangle(10, 100, 600, 600));
+            this.NodeGraph = new GraphContainer(new Rectangle(0, 0, 600, 600));
             this.AddChild(NodeGraph);
             base.Initialize();
         }
