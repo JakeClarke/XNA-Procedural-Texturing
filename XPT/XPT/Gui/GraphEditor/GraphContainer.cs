@@ -21,9 +21,12 @@ namespace XPT.Gui.GraphEditor
 
         }
 
+        Vector2 posOffset = new Vector2(10f, 35f);
+        static readonly Vector2 perNodeOffset = new Vector2(110f, 0f);
         public void AddNode(BaseNode node)
         {
-            GraphNode guiNode = new GraphNode(Vector2.Zero, node);
+            GraphNode guiNode = new GraphNode(posOffset, node);
+            posOffset += perNodeOffset; // hack.
             this.graphMap.Add(node, guiNode);
             this.AddChild(guiNode);
         }
@@ -35,6 +38,7 @@ namespace XPT.Gui.GraphEditor
             this.graphMap.Remove(node);
         }
 
+        
         public void LoadGraph(Graph graph)
         {
             // need to clear anything preview stuff that was there before.
@@ -51,5 +55,6 @@ namespace XPT.Gui.GraphEditor
                 this.AddNode(item);
             }
         }
+
     }
 }
