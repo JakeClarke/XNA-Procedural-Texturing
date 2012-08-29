@@ -26,6 +26,8 @@ namespace XPT
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            this.graphics.PreferredBackBufferHeight = 768;
+            this.graphics.PreferredBackBufferWidth = 1024;
             Content.RootDirectory = "Content";
             this.guiManager = new GuiManager(this);
             this.Components.Add(guiManager);
