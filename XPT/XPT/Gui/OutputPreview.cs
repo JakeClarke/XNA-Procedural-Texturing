@@ -17,6 +17,12 @@ namespace XPT.Gui
 
         }
 
+        public override void LoadContent()
+        {
+            this.Invalidate();
+            base.LoadContent();
+        }
+
         public override void Draw(SpriteBatch guiSpriteBatch, GameTime gameTime, Vector2 position)
         {
             // generate a new preview image if we need one.
