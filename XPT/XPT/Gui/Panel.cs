@@ -29,8 +29,8 @@ namespace XPT.Gui
             Rectangle b = this.Bounds;
             b.X += (int)position.X;
             b.Y += (int)position.Y;
-            guiSpriteBatch.Draw(blank, this.bounds, this.color);
-            base.Draw(guiSpriteBatch, gameTime, new Vector2(bounds.X, bounds.Y));
+            guiSpriteBatch.Draw(blank, b, this.color);
+            base.Draw(guiSpriteBatch, gameTime, new Vector2((float)b.X, (float)b.Y));
         }
 
         public Rectangle Bounds
